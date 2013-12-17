@@ -1,5 +1,5 @@
 Lecture 1 - Switches
-====================
+================
 
 Switch forwarding has 2 types
 
@@ -7,11 +7,11 @@ Switch forwarding has 2 types
 	- Complete frame is received before forwarding
 
 2. Cut-through
-	- Frame is forwarded tbefore the entire frame is received
+	- Frame is forwarded therefore the entire frame is received
 
 
-Store-and-forward
-------------------
+### Store-and-forward
+
 Stores frame in a buffer
 Performs error checking using FCS
 
@@ -24,22 +24,21 @@ high latency - because reason.
 high integrity ? Store and forward is required if QoS is important
 
 
-Cut-through Fast Forward
------------------------
+### Cut-through Fast Forward
+
 Buffers just enough of the frame to read destination MAC and forwards it.
 
-Low latency - does not perform error checing (UDP of the 2nd layer world :D)
+Low latency - does not perform error checking (UDP of the 2nd layer world :D)
 
 Low integrity - corrupted data consumes bandwidth so destination NIC discards them instead of switch
 
 
-Cut-through Fragment Free
--------------------------
+### Cut-through Fragment Free
+
 - Stores first 64 bytes of frame
-- Most coliisions occur in first 64 bytes apparently
+- Most collisions occur in first 64 bytes apparently
 - Performs check on first 64 bytes to ensure no collision
 - It's a compromise between High Latency and High integrity
-
 
 Going deeper to the switch ports (interfaces), there's Memory Buffering.
 
@@ -54,8 +53,7 @@ Going deeper to the switch ports (interfaces), there's Memory Buffering.
 - Queues dynamically linked to destination ports
 
 
-.
--
+## 
 
 Lecture 2 - VLANs
 =================
@@ -64,20 +62,20 @@ Lecture 2 - VLANs
 
 1. Security
 
-- Seperated networks between VLANs
+	- Separated networks between VLANs
 
 2. Performance
 
-- Reduces unncessary traffic between VLANs
+	- Reduces unncessary traffic between VLANs
 
 3. Broadcast storm mitigation
 
-- Reduces unncessary broadcast traffics
+	- Reduces unncessary broadcast traffics
 
 4. Improved IT staff efficiency
 
-- Easier to manage network
-- Control network traffic via ACL
+	- Easier to manage network
+	- Control network traffic via ACL
 
 #### VLAN Trunking / Tagging
 
@@ -93,15 +91,16 @@ Default is VLAN 1 for Management VLAN.
 
 Then there's the voice VLAN. Dedicated for QoS :P
 
-====================================================================
+## 
 
 
 Lecture 3 -Trunking
 ===================
 
-Dynamic Trunking Protocol (DTP)
---------------------------------
+### Dynamic Trunking Protocol (DTP)
+
 Modes of DTP
+
 1. On (default)
 	- sends DTP advertisements
 
@@ -117,12 +116,12 @@ Modes of DTP
 	- unconditional trunking state
 
 
-VLAN Trunking Protocol (VTP)
------------------------------
+### VLAN Trunking Protocol (VTP)
 
 VLAN changes on one switch to be propagated to other switching via VTP
 
 3 modes for VTP
+
 1. Server
 	- advertise the VTP VLAN info
 	- create, delete, rename VLANs
@@ -133,7 +132,8 @@ VLAN changes on one switch to be propagated to other switching via VTP
 	- Forwards VTP advertisements but ignore information contained in the message
 
 
-Inter-VLAN routing methods:
+#### Inter-VLAN routing methods:
+
 1. Traditional
 2. Router-on-a-stick
 	- subinterfaces
@@ -141,11 +141,11 @@ Inter-VLAN routing methods:
 	- Using layer 3 switch
 	- Uses Switch Virtual Interfaces (SVI) to retag the frame
 
-======================================================================
+## 
 
 
 Lecture 4 - Access Control List (ACL)
-=====================================
+===========================
 
 - Routers are stateless
 - Packets are treated independently
@@ -164,23 +164,23 @@ Standard ACL is placed closest to the destination.
 Extended ACL is placed closest to source
 
 
-======================================================================
+## 
 
 
 Lecture 5 - LAN Design
-======================
+=================
 
-3 layers
---------
+### 3 layers:
 - Access
 - Distribution
 - Core
 
-Access layer is for end devices
-Distribution layer aggregates the data from access layer to core
+Access layer is for end devices.
+Distribution layer aggregates the data from access layer to core.
 Core is the high-speed backbone.
 
 Benefits of a hierarchical network
+
 1. Scalability
 	- Can be expanded easily
 2. Redundancy
@@ -195,31 +195,34 @@ Benefits of a hierarchical network
 	- The modularity of the hierarchical design allows for the network to scale without becoming overly complicated.
 
 
-Design Principles
------------------
+## Design Principles
 
-Network Diameter
-	- Number of devices a packet has to cross before it reaches its destination
-	- Keeping it low ensures low and predictable latency
+1. Network Diameter
 
-Bandwidth Aggregation
-	- Parcitce of considering specific bandwidth req. of each part of the hierarchy.
+  - Number of devices a packet has to cross before it reaches its destination
+  - Keeping it low ensures low and predictable latency
 
-Redundancy
+2. Bandwidth Aggregation
+
+  - Parcitce of considering specific bandwidth req. of each part of the hierarchy.
+
+3. Redundancy
 
 
 What is converged network?
+
 Convergence is the process of combining voice and video communications on a data network.
 Using a properly designed hierarchical network and implementing QoS policies that can prioritize the audio and video, they can be converged onto the data network with little to no impact on quality of service.
 
 
-====================================================================
+### 
 
 
 Lecture 6 - Spanning Tree Protocol (STP)
 ========================================
 
 Why do we need STP?
+
 When we implement redundancy on our network design, layer 2 loops can happen.
 Frames do not have TTL like Packet does.
 
@@ -230,6 +233,7 @@ STP uses Spanning Tree Algorithm (STA) to determine which switch ports on a netw
 STA designates a single switch as the root bridge and use it as a refernce point for all STA calculations.
 
 3 steps of STA:
+
 1. Elect one root bridge
 2. Select the root port on all non-root bridges
 3. Select the designated and non-designated ports
@@ -238,13 +242,13 @@ Bridge ID (BID) is used to identify each bridge/switch.
 Switch with the lowest BID becomes the root bridge.
 
 BID consists of:
-a) 2-byte bridge priority
-b) 6-byte MAC address
+
+1. 2-byte bridge priority
+2. 6-byte MAC address
 
 If all devices have the same priority, MAC address takes into account.
 
-Port states
------------
+### Port states
 1. Blocking - non-designated port and does not forward frames but participates in STP
 2. Listening - Can participate in frame forwarding depending on STP. Doesn't forward frames.
 3. Learning - Prepares to participate in frame forwarding
@@ -253,24 +257,23 @@ Port states
 
 
 STP Convergence:
+
 - Time taken for root bridge to be elected
 - setting port roles to eliminate loops. (root / designated / non-designated ports)
 
-Algorhyme
----------
-I think that I shall never see
-A graph as lovely as a tree.
-A tree which must be sure to span.
-So packets can reach every LAN.
-First the root must be selected.
-By ID, it is elected.
-Least cost paths from Root are traced.
-In the tree these paths are placed.
-A mesh is made by folks like me.
-Then bridges find a spanning tree.
+### Algorhyme
+    I think that I shall never see
+    A graph as lovely as a tree.
+    A tree which must be sure to span.
+    So packets can reach every LAN.
+    First the root must be selected.
+    By ID, it is elected.
+    Least cost paths from Root are traced.
+    In the tree these paths are placed.
+    A mesh is made by folks like me.
+    Then bridges find a spanning tree.
 
-
-====================================================================
+## 
 
 Lecture 7 - Wireless Concepts
 =============================
@@ -282,33 +285,28 @@ Wireless Technologies:
 3. MAN (Metropolitan Area Network)
 4. WAN (Wide Area Network)
 
-PAN
----
+### PAN
 802.15.3 (Bluetooth)
 Range --> short
 Application (P2P or Device-to-device)
 
-LAN
----
+### LAN
 802.11 (Wireless LAN)
 Range ------> medium
 Application (Enterprise Networks)
 
-MAN
----
+### MAN
 802.11, 802.16, 802.20
 Range ---------------> Medium-long
 Application (Last Mile Access)
 
-WAN
----
+### WAN
 GSM, CDMA, Satellite
 Range -------------------------------------------------> Long
 Application (Mobile Data Devices)
 
 
-Wireless Access Point (AP)
---------------------------
+### Wireless Access Point (AP)
 
 - Connects wireless clients to the wired LAN
 - Layer 2 device
@@ -316,59 +314,54 @@ Wireless Access Point (AP)
 - Uses CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)
 
 
-Wireless Router
----------------
+### Wireless Router
 Performs the role of AP, Ethernet Switch and a router. 3 in 1 teh tarik ;D
 
 Service Set Identifier (SSID) is to distinguish between wireless networks
 
 
-802.11 WLAN topologies
-----------------------
-Ad Hoc network or Independent Basic Service Set (IBSS)
+### 802.11 WLAN topologies
+
+1. Ad Hoc network or Independent Basic Service Set (IBSS)
 	- NO need access points.
 	- Client configure the wireless parameters between themselves.
 
-Basic Service Sets (BSS)
+2. Basic Service Sets (BSS)
 	- Improves range for clients using an AP
 	- Adds services ??
 
-Extended Service Sets
+3. Extended Service Sets
 	- When a single BSS provides insufficient RF coverage, use more of BSS and join them into an extended service set (ESS).
 	- BSSID is different but the SSID is the same.
 	- The new coverage area is called extended service area (ESA)
 	- BSSID is the MAC address of the AP serving the BSS
 
-Common Distribution System
+4. Common Distribution System
 	- multiple points in an ESS to appear to be single BSS
 	- ESS common SSID to allow user to roam from AP to AP
 
 
-802.11 Client and AP Association
---------------------------------
+### 802.11 Client and AP Association
 There's a few components:
+
 1. Beacons
 2. Probes
 3. Authentication
 4. Association
 
 
-Beacons
---------
+### Beacons
 - Frames used by the WLAN network to advertise its presence.
 - APs may broadcast beacons periodically.
 - main goal is to allow WLAN clients to learn which networks and APs are available
 
-Probes
-------
+### Probes
 - Frames used by WLAN clients to find their networks
 
-Authentication
---------------
+### Authentication
 - A process which is an artifact from the original 802.11 standard, but still required by the standard.
 
-Association
------------
+### Association
 - The process of establishing the data link between an AP and a WLAN client
 
 
@@ -386,11 +379,10 @@ Before an 802.11 client can send data over a WLAN network it goes through this 3
 | AP | --> Association reply 			--> | Client |
 | AP | <-> Data Transmission 			<-> | Client |
 
-
-=====================================================================
+## 
 
 Lecture 8 - WAN Technologies and PPP
-====================================
+=============================
 
 What is WAN?
 WAN is the data communication network that operates beyond the geographic scope of a LAN.
@@ -418,61 +410,65 @@ Data Link Encapsulation
 	- ISDN
 
 
-Circuit vs Packet Switching
+_Circuit_ vs _Packet_ Switching
 
-Circuit sets up a path end to end.
-Circuit using Time Division Multiplexing (TDM)
-Expensive way to move data
+    Circuit sets up a path end to end.
+    Circuit using Time Division Multiplexing (TDM)
+    Expensive way to move data
 
-Packets pass from switch to switch via addressing scheme in packet
-Can be connectionless (internet)
-Connection-oriented (Frame Relay)
-Prone to delays because bandwidth is shared.
-
-
+    Packets pass from switch to switch via addressing scheme in packet
+    Can be connectionless (internet)
+    Connection-oriented (Frame Relay)
+    Prone to delays because bandwidth is shared.
 TDM ?
-TDM uses timeslots.
-Bandwidth is statically allocated.
-It is protocol independant.
 
-WAN Technologies
-----------------
+    TDM uses timeslots.
+    Bandwidth is statically allocated.
+    It is protocol independant.
 
+### WAN Technologies
 Analog Dialup
+
 - Analog local loop
 - 33 kbps to 56 kbps
 - Low implementation cost
 - Dial-up technology
 
 ISDN
+
 - Digital local loop
 - Two 64 kbps data channels, 1 16 kbps signaling channel
 - Sometimes used as a WAN backup
 - Dial-up technology
 
 Leased Line
+
 - Permanent dedicated point-to-point link
 - Up to 2.5 Gbps bandwidth
 - Very costly, particularly when connecting many sites
 
 X.25
+
 - First standardized packet switched technology
 - Low bandwidth, maximum 48 kbps
 - Provides full error and flow control
 - Typical use is for POS card readers
 
 Frame Relay
+
 - Data rates typically up to 4 Mbps
 - Simpler protocol that provides no error or flow control
 - Provides permanent shared medium bandwidth connectivity that carries voice and data
 
 ATM
+
 - Data rates beyond 155 Mbps
 - Built on cell-based architecture
 - Cells have a fixed length of 53 bytes (payload 48 bytes)
 - Well suited for carrying video and voice
 
 Digital Subscriber Line – DSL
+
 - Uses existing twisted-pair telephone line
 - Different types of DSL
 - Always on technology
@@ -481,13 +477,14 @@ Digital Subscriber Line – DSL
 - For satisfactory service, must be less than 5.5km from DSLAM
 
 Cable Modem
+
 - High speed data transmission using same coaxial lines that transmit Cable TV
 - Always-on shared connection
 - Possibility of 30 – 40 Mbps of data on one 6 Mhz cable channel.
 
 
 Point to Point Protocol (PPP)
-=============================
+=====================
 
 PPP contains two sub-protocols:
 1. Network Control Protocol
@@ -501,8 +498,7 @@ PPP contains two sub-protocols:
 	- Terminate link
 	- Determine when a link is functioning properly or when it is failing
 
-LCP
----
+### LCP
 - LCP Listen
 - Option negotiation
 - Link Quality is determined (optional)
@@ -511,38 +507,32 @@ LCP
 - LCP termination
 
 PPP session Establishment
+
 1. Link establishment
 2. Authentication
 3. Network Layer Protocol
 
-Link-establishment phase
--------------------------
+### Link-establishment phase
 - Each PPP device sends LCP frames to configure and test the data link.
 - Phase is complete when a config ACK frame has been sent and received.
 
-Authentication phase (Optional)
----------------------
+### Authentication phase (Optional)
 - Takes place right before the network layer protocol phase.
 
-Network Layer Protocol Phase
-----------------------------
+### Network Layer Protocol Phase
 - sends NCP packets to choose and configure one or more network layer protocols such as IP.
 - Once configured, packets can be sent over the link.
 - LCP closes the link.
 - Informs the network layer protocol so they can take appropriate actions.
 - PPP link remains configured until LCP or NCP frames closes the link or until an inactivity timer expires or user intervenes.
 
-
-Password Authentication Protocol (PAP)
---------------------------------------
+### Password Authentication Protocol (PAP)
 - two-way handshake.
 - not a strong authentication tool. IT IS WEAK WEAK WEAK!
 - passwords are sent in clear text. noob as fuck lol
 -  no protection from playback or repeated trial-and-error attacks.
 
-
-Challenge Handshake Authentication Protocol (CHAP)
---------------------------------------------------
+### Challenge Handshake Authentication Protocol (CHAP)
 - used at the startup of a link and periodically verifies the identity of the remote node using a 3 way handshake.
 - after the Link-establishment phase, local router sends a "challenge" message.
 - Remote node responds with a value calculated using a one-way hash function (MD5.
@@ -552,37 +542,30 @@ If values match, authentication is acknowledged, otherwise terminate connection.
 - CHAP provides protection against playback attack.
 - Challenge is unique and random.
 
-
-================================================================================
-
-
+## 
 Lecture 9 - Frame Relay
 =======================
-
 
 - Frame relay is packet-switched, connection-oriented, WAN service.
 - Uses a subset of High-level Data link control (HDLC) protocol called Link Access Procedure for Frame Relay (LAPF)
 - Carries data between Data Terminal Equipment (DTE) user devices and the Data Communication Equipment (DCE) at the edge of the WAN
 
+Switched Virtual Circuit (SVC) between the two DTEs may change.
 
-Switched Virtual Circuit (SVC) between the two DTEs may change
-Permanent Virtual Circuits (PVC) between the two DTEs will always be the same. LIke duhhh
-
+Permanent Virtual Circuits (PVC) between the two DTEs will always be the same. Like duhhh
 
 DLCI ?
-Data-link connection identifier identifies the logical VC between the CPE and Frame Relay Switch (FRS)
 
+    Data-link connection identifier identifies the logical VC between the CPE and Frame Relay Switch (FRS)
 
-
-================================================================================
-
+## 
 
 Lecture 10 - IP addressing Services - DHCP and NAT
 ==================================================
 
 
-Dynamic Host Configuration Protocol (DHCP)
-------------------------------------------
+### Dynamic Host Configuration Protocol (DHCP)
+
 Methods of address allocation:
 1.  Manual
 	- IP address for client is pre-allocated by the admin and DHCP conveys the address to the client
@@ -594,22 +577,21 @@ Methods of address allocation:
 	- DHCP assigns, or leases, an IP address to the client for a limited period of time.
 
 
-DHCP Operation
---------------
+### DHCP Operation
 
-Client | --> DHCPDISCOVER --> | Server (Broadcast)
-Client | <-- DHCPOFFER 		<-- | Server
-Client | --> DHCPREQUEST 	--> | Server
-Client | <-- DHCPACK 			<-- | Server
+     Client | --> DHCPDISCOVER  --> | Server (Broadcast)
+     Client | <-- DHCPOFFER     <-- | Server
+     Client | --> DHCPREQUEST   --> | Server
+     Client | <-- DHCPACK 	  <-- | Server
 
 
-Network Address Translation (NAT)
------------------------------------
+### Network Address Translation (NAT)
+
 - can occur dynamically or statically
 - NAT (PAT) port address translation allows multiple inside addresses to map to the same global address.
 
 
-=========================================================================================
+## 
 
 
 Lecture 11 - Network Security
@@ -635,25 +617,27 @@ Lecture 11 - Network Security
 	- Uses e-mail or other means to trick others into providing information. 
 
 
-Open vs Closed networks
------------------------
+### Open vs Closed networks
+
 Security challenge faced by network admins are balancing the 2 important needs.
+
 - Protect private, personal and business info.
 - Keep networks open to support business requirements.
 
 Open - any service is permitted unless it is expressly denied.
+
 Restrictive - services are denied by default unless deemed necessary.
 
 
-Developing a Security Policy
------------------------------
+### Developing a Security Policy
+
 - Informs users, staff and managers of their requirement for protecting information assets.
 - Specifies the mechanisms through which these requirements can be met.
 - Provides a baseline from which to acquire, configure and audit computer systems for compliance.
 
 
-Network Security
------------------
+### Network Security
+
 1. Vulnerability
 	- Degree of weakness which is inherent in every network and device.
 
@@ -663,13 +647,14 @@ Network Security
 3. Attack
 	- The threats use a variety of tools and programs to launch attack against networks.
 
-E.g. 	- Your back is your vulnerability.
-			- Threat is someone threatening you to attack you using by taking advantages of your vulnerability.
-			- An attack is when they make the threat come true.
+### E.g: 
+
+- Your back is your __vulnerability__.
+- __Threat__ is someone threatening you to attack you using by taking advantages of your _vulnerability_.
+- An __attack__ is when they make the _threat_ come true.
 
 
-Network attacks - 4 primary classes
------------------------------------
+### Network attacks - 4 primary classes
 1. Reconnaissance
 	- unauthorized discovery and mapping of systems, services or vulnerabilities
 	- a.k.a information gathering ;)
@@ -686,30 +671,33 @@ Network attacks - 4 primary classes
 	- Malicious software to damage or corrupt a system, replicate itself or deny access to networks, ,systems or services.
 
 
-Examples
---------
-Reconnaisance
+### Examples
+
+1. Reconnaisance
+
 	- port scans (nmap, superscan)
 	- packet sniffers (wireshark)
 
-Network Access
+2. Network Access
+
 	- password attacks
 	- trust exploitation
 	- port redirection
 	- MITM attack
 
-Network Attacks
+3. Network Attacks
+
 	- DoS
 	- Worm: makes lots of copies of itself.
 	- Virus: executing a particular unwanted function on a workstation
 	- Trojan horse: written to look like something else but actually is a backdoor :D
 
 
-======================================================================================
+## 
 
 
 Lecture 12 - Teleworkers
-========================
+==================
 
 
 Business requirements for Teleworkers
