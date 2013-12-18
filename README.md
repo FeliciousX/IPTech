@@ -366,6 +366,7 @@ There's a few components:
 
 
 Before an 802.11 client can send data over a WLAN network it goes through this 3 stages.
+
 1. 802.11 probing
 2. Authentication
 3. Association
@@ -385,10 +386,11 @@ Lecture 8 - WAN Technologies and PPP
 =============================
 
 What is WAN?
-WAN is the data communication network that operates beyond the geographic scope of a LAN.
+	WAN is the data communication network that operates beyond the geographic scope of a LAN.
 
 
 Cisco Enterprise Architecture models:
+
 1. Enterprise Campus Architecture
 2. Enterprise Branch Architecture
 3. Enterprise Data Center Architecture
@@ -397,6 +399,7 @@ Cisco Enterprise Architecture models:
 WAN operation focus on Layer 1 and Layer 2 of the OSI model.
 
 Data Link Encapsulation
+
 1. Dedicated Point-to-point
 	- Cisco HDLC
 	- PPP
@@ -420,6 +423,7 @@ _Circuit_ vs _Packet_ Switching
     Can be connectionless (internet)
     Connection-oriented (Frame Relay)
     Prone to delays because bandwidth is shared.
+    
 TDM ?
 
     TDM uses timeslots.
