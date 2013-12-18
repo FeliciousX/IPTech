@@ -371,13 +371,13 @@ Before an 802.11 client can send data over a WLAN network it goes through this 3
 3. Association
 
 
-| AP | <-- Probe request 					<-- | Client |
-| AP | --> Probe reply  					--> | Client |
-| AP | <-- Authentication request <-- | Client |
-| AP | --> Authentication reply 	--> | Client |
-| AP | <-- Association request 		<-- | Client |
-| AP | --> Association reply 			--> | Client |
-| AP | <-> Data Transmission 			<-> | Client |
+	| AP | <-- Probe request          <-- | Client |
+	| AP | --> Probe reply            --> | Client |
+	| AP | <-- Authentication request <-- | Client |
+	| AP | --> Authentication reply   --> | Client |
+	| AP | <-- Association request    <-- | Client |
+	| AP | --> Association reply      --> | Client |
+	| AP | <-> Data Transmission      <-> | Client |
 
 ## 
 
@@ -582,7 +582,7 @@ Methods of address allocation:
      Client | --> DHCPDISCOVER  --> | Server (Broadcast)
      Client | <-- DHCPOFFER     <-- | Server
      Client | --> DHCPREQUEST   --> | Server
-     Client | <-- DHCPACK 	  <-- | Server
+     Client | <-- DHCPACK 	    <-- | Server
 
 
 ### Network Address Translation (NAT)
