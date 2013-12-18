@@ -195,7 +195,7 @@ Benefits of a hierarchical network
 	- The modularity of the hierarchical design allows for the network to scale without becoming overly complicated.
 
 
-## Design Principles
+### Design Principles
 
 1. Network Diameter
 
@@ -215,7 +215,7 @@ Convergence is the process of combining voice and video communications on a data
 Using a properly designed hierarchical network and implementing QoS policies that can prioritize the audio and video, they can be converged onto the data network with little to no impact on quality of service.
 
 
-### 
+## 
 
 
 Lecture 6 - Spanning Tree Protocol (STP)
