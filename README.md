@@ -52,9 +52,6 @@ Going deeper to the switch ports (interfaces), there's Memory Buffering.
 - Common memory buffer all the ports on the switch share.
 - Queues dynamically linked to destination ports
 
-
-## 
-
 Lecture 2 - VLANs
 =================
 
@@ -90,9 +87,6 @@ Management VLAN is configured as long as u assign an IP address to it.
 Default is VLAN 1 for Management VLAN.
 
 Then there's the voice VLAN. Dedicated for QoS :P
-
-## 
-
 
 Lecture 3 -Trunking
 ===================
@@ -141,9 +135,6 @@ VLAN changes on one switch to be propagated to other switching via VTP
 	- Using layer 3 switch
 	- Uses Switch Virtual Interfaces (SVI) to retag the frame
 
-## 
-
-
 Lecture 4 - Access Control List (ACL)
 ===========================
 
@@ -162,10 +153,6 @@ Cisco default ACL rule is DENY :(
 Standard ACL vs Extended ACL
 Standard ACL is placed closest to the destination.
 Extended ACL is placed closest to source
-
-
-## 
-
 
 Lecture 5 - LAN Design
 =================
@@ -213,9 +200,6 @@ What is converged network?
 
 Convergence is the process of combining voice and video communications on a data network.
 Using a properly designed hierarchical network and implementing QoS policies that can prioritize the audio and video, they can be converged onto the data network with little to no impact on quality of service.
-
-
-## 
 
 
 Lecture 6 - Spanning Tree Protocol (STP)
@@ -272,8 +256,6 @@ STP Convergence:
     In the tree these paths are placed.
     A mesh is made by folks like me.
     Then bridges find a spanning tree.
-
-## 
 
 Lecture 7 - Wireless Concepts
 =============================
@@ -380,9 +362,7 @@ Before an 802.11 client can send data over a WLAN network it goes through this 3
 	| AP | --> Association reply      --> | Client |
 	| AP | <-> Data Transmission      <-> | Client |
 
-## 
-
-Lecture 8 - WAN Technologies and PPP
+re 8 - WAN Technologies and PPP
 =============================
 
 What is WAN?
@@ -423,7 +403,7 @@ _Circuit_ vs _Packet_ Switching
     Can be connectionless (internet)
     Connection-oriented (Frame Relay)
     Prone to delays because bandwidth is shared.
-    
+
 TDM ?
 
     TDM uses timeslots.
@@ -491,6 +471,7 @@ Point to Point Protocol (PPP)
 =====================
 
 PPP contains two sub-protocols:
+
 1. Network Control Protocol
 	- Responsible for configuring, enabling and disabling the network layer protocol.
 	- Encapsulate and negotiate options for multiple network layer protocols
@@ -533,20 +514,19 @@ PPP session Establishment
 ### Password Authentication Protocol (PAP)
 - two-way handshake.
 - not a strong authentication tool. IT IS WEAK WEAK WEAK!
-- passwords are sent in clear text. noob as fuck lol
+- passwords are sent in clear text.
 -  no protection from playback or repeated trial-and-error attacks.
 
 ### Challenge Handshake Authentication Protocol (CHAP)
 - used at the startup of a link and periodically verifies the identity of the remote node using a 3 way handshake.
 - after the Link-establishment phase, local router sends a "challenge" message.
 - Remote node responds with a value calculated using a one-way hash function (MD5.
-- Responside is based on the password and challenge message.
+- Response is based on the password and challenge message.
 - Local router checks the response.
 If values match, authentication is acknowledged, otherwise terminate connection. LIKE ZAP.
 - CHAP provides protection against playback attack.
 - Challenge is unique and random.
 
-## 
 Lecture 9 - Frame Relay
 =======================
 
@@ -562,8 +542,6 @@ DLCI ?
 
     Data-link connection identifier identifies the logical VC between the CPE and Frame Relay Switch (FRS)
 
-## 
-
 Lecture 10 - IP addressing Services - DHCP and NAT
 ==================================================
 
@@ -571,6 +549,7 @@ Lecture 10 - IP addressing Services - DHCP and NAT
 ### Dynamic Host Configuration Protocol (DHCP)
 
 Methods of address allocation:
+
 1.  Manual
 	- IP address for client is pre-allocated by the admin and DHCP conveys the address to the client
 
@@ -595,9 +574,6 @@ Methods of address allocation:
 - NAT (PAT) port address translation allows multiple inside addresses to map to the same global address.
 
 
-## 
-
-
 Lecture 11 - Network Security
 ==============================
 
@@ -607,19 +583,14 @@ Lecture 11 - Network Security
 	- An individual who uses their knowledge to break into systems that they are not authorized to use
 - Hacker
 	- Programming expert
-
 - Cracker
 	- Someone who tries to gain unauthorized access to network resources with malicious intent.
-
 - Phreaker
 	- Individual who manipulates phone network, through a payphone, to make free long distance calls.
-
 - Spammer
 	- An individual who sends large quantities of unsolicited e-mail messages.
-
 - Phisher
-	- Uses e-mail or other means to trick others into providing information. 
-
+	- Uses e-mail or other means to trick others into providing information.
 
 ### Open vs Closed networks
 
@@ -654,7 +625,7 @@ Restrictive - services are denied by default unless deemed necessary.
 ### E.g: 
 
 - Your back is your __vulnerability__.
-- __Threat__ is someone threatening you to attack you using by taking advantages of your _vulnerability_.
+- __Threat__ is someone threatening you to attack you by taking advantages of your _vulnerability_.
 - An __attack__ is when they make the _threat_ come true.
 
 
@@ -672,7 +643,7 @@ Restrictive - services are denied by default unless deemed necessary.
 	- the most annoying one of all UGH
 
 4. Worms, Viruses and Trojan Horses
-	- Malicious software to damage or corrupt a system, replicate itself or deny access to networks, ,systems or services.
+	- Malicious software to damage or corrupt a system, replicate itself or deny access to networks, systems or services.
 
 
 ### Examples
@@ -697,9 +668,6 @@ Restrictive - services are denied by default unless deemed necessary.
 	- Trojan horse: written to look like something else but actually is a backdoor :D
 
 
-## 
-
-
 Lecture 12 - Teleworkers
 ==================
 
@@ -721,6 +689,7 @@ Business requirements for Teleworkers
 
 
 Connecting Teleworkers to the WAN
+
 1. Dialup Access
 	- cheap but slow
 
