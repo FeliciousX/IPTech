@@ -362,7 +362,7 @@ Before an 802.11 client can send data over a WLAN network it goes through this 3
 	| AP | --> Association reply      --> | Client |
 	| AP | <-> Data Transmission      <-> | Client |
 
-re 8 - WAN Technologies and PPP
+Lecture 8 - WAN Technologies and PPP
 =============================
 
 What is WAN?
